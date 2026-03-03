@@ -35,8 +35,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;min-
 /* HEADER */
 header{background:var(--surface);border-bottom:1px solid var(--border);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem;position:sticky;top:0;z-index:50;box-shadow:0 1px 12px var(--shadow);}
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-style:italic;color:var(--ink);letter-spacing:-.01em;user-select:none;}
-.logo b{color:var(--pink-dark);}
-.logo i{color:var(--green-dark);font-style:normal;}
 .legend{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;}
 .li{display:flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--ink2);}
 .ld{width:8px;height:8px;border-radius:50%;}
@@ -329,18 +327,42 @@ const SKEY = 'sb_publishable_7y1poHklvBQLz9rufCB25g_8t6xpEGL';
 const db = window.supabase.createClient(SURL, SKEY);
 
 // ── JADWAL DATA ───────────────────────────────────────────
+// REVISI: TUE PDB → PDP | WED PDP → PDNUM
 const cls = {
   sha:{
     MON:[{n:'OPJAR',t:'10.00–12.30',r:'D.108',h:10}],
-    TUE:[{n:'ALJABAR',t:'08.00–09.40',r:'D.307',h:8},{n:'PDB',t:'10.00–12.30',r:'Muldis.501',h:10},{n:'GEOLIT',t:'13.00–15.30',r:'D.404',h:13}],
-    WED:[{n:'PDP',t:'10.00–12.30',r:'D.307',h:10},{n:'ApreFilmArab',t:'14.00–16.50',r:'4.4302',h:14}],
-    THU:[{n:'ALJABAR',t:'13.00–14.40',r:'D.307',h:13}],FRI:[]
+    TUE:[
+      {n:'ALJABAR',t:'08.00–09.40',r:'D.307',h:8},
+      {n:'PDP',t:'10.00–12.30',r:'Muldis.501',h:10},   // was PDB
+      {n:'GEOLIT',t:'13.00–15.30',r:'D.404',h:13}
+    ],
+    WED:[
+      {n:'PDNUM',t:'10.00–12.30',r:'D.307',h:10},       // was PDP
+      {n:'ApreFilmArab',t:'14.00–16.50',r:'4.4302',h:14}
+    ],
+    THU:[{n:'ALJABAR',t:'13.00–14.40',r:'D.307',h:13}],
+    FRI:[]
   },
   den:{
-    MON:[{n:'Agama Islam',t:'10.00–11.50',r:'K3.202A',h:10},{n:'B.Indo',t:'13.00–14.50',r:'K3.303A',h:13}],
-    TUE:[{n:'KWN',t:'08.00–09.40',r:'K1.9675',h:8},{n:'EBM',t:'10.00–11.50',r:'K2.9657',h:10},{n:'Pancasila',t:'13.00–14.40',r:'K2.9656',h:13}],
-    WED:[{n:'OR',t:'07.00–08.50',r:'LapanganBola',h:7},{n:'SHS',t:'10.00–11.50',r:'K2.9657',h:10},{n:'SHS',t:'13.00–14.50',r:'K3.301B',h:13}],
-    THU:[{n:'PRD',t:'08.00–10.50',r:'K3.203B',h:8},{n:'DLAI',t:'13.00–14.50',r:'K3.101B',h:13}],FRI:[]
+    MON:[
+      {n:'Agama Islam',t:'10.00–11.50',r:'K3.202A',h:10},
+      {n:'B.Indo',t:'13.00–14.50',r:'K3.303A',h:13}
+    ],
+    TUE:[
+      {n:'KWN',t:'08.00–09.40',r:'K1.9675',h:8},
+      {n:'EBM',t:'10.00–11.50',r:'K2.9657',h:10},
+      {n:'Pancasila',t:'13.00–14.40',r:'K2.9656',h:13}
+    ],
+    WED:[
+      {n:'OR',t:'07.00–08.50',r:'LapanganBola',h:7},
+      {n:'SHS',t:'10.00–11.50',r:'K2.9657',h:10},
+      {n:'SHS',t:'13.00–14.50',r:'K3.301B',h:13}
+    ],
+    THU:[
+      {n:'PRD',t:'08.00–10.50',r:'K3.203B',h:8},
+      {n:'DLAI',t:'13.00–14.50',r:'K3.101B',h:13}
+    ],
+    FRI:[]
   }
 };
 const SDAYS=['MON','TUE','WED','THU','FRI'];
